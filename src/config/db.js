@@ -3,7 +3,7 @@ module.exports = {
     "password": process.env.password,
     "database": process.env.database,
     "host": process.env.host,
-    "dialect": "mysql",
+    "dialect": "postgres",
     "define": {
         timestamps: true,
         underscored: true,
