@@ -1,4 +1,3 @@
-const TokenVerifyService = require("../services/TokenVerifyService")
 const Message = require("../models/Message")
 
 module.exports = {
