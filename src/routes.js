@@ -5,6 +5,7 @@ const ChatController = require("./controllers/ChatController")
 
 router.post("/Register", UserController.Register)
 router.post("/Authenticate", UserController.Authenticate)
+router.get("/Profile", TokenMiddleware, UserController.Profile)
 
 router.post("/TokenVerify", ChatController.TokenVeryfi)
 
