@@ -54,20 +54,27 @@ module.exports = {
             return res.status(400).send({ error: "authenticate failed, try again" })
         }
     },
-    async Profile(req, res){
+    async TokenVerify(req, res, next){
         try {
-            const user = await User.findOne({ where: { id: req.UserId } })
+            const { token } = req.body
+
+            if (!token){
+                return res.status(400).send({ error: "Invalid credential" })
+            }
+
+            const response = await TokenVerifyService.TokenVerify(token)
+
+            const user = await User.findOne({ where: { id: response }})
 
             if (!user){
                 return res.status(400).send({ error: "user not found" }) 
             }
-
-            user.senha = undefined
-
+            
             return res.status(200).send({ success: true, user: user })
         } catch (error) {
-            return res.status(400).send({ error: "profile failed, try again" })
+            next(error)
         }
+        
     }
     
 }
