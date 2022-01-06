@@ -10,7 +10,9 @@ const port = process.env.PORT || 3000
 
 const app = express()
 const server = http.createServer(app)
-const sockets = socketio(server)
+const sockets = socketio(server, { 
+    path: "/socket/"
+})
 
 app.use(cors())
 app.use(express.json())
