@@ -6,13 +6,11 @@ const cors = require("cors")
 const router = require("./routes")
 require("./database")
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3300
 
 const app = express()
 const server = http.createServer(app)
-const sockets = socketio(server, { 
-    path: "/socket/"
-})
+const sockets = socketio(server)
 
 app.use(cors())
 app.use(express.json())
